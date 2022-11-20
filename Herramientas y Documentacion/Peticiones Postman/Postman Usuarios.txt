@@ -1,0 +1,12 @@
+atom
+gerenteAtom01
+gerenteAtom02
+
+personalAtom01
+personalAtom02
+
+turisticas
+
+usuarioLibre
+
+Pass: 123456

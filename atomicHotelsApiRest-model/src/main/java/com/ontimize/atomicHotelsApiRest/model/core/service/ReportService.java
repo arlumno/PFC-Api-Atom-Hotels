@@ -170,52 +170,52 @@ public class ReportService implements IReportService {
 
 	}
 
-	public ResponseEntity plantilla(Map<String, Object> keyMap, List<String> attrList) {
-		EntityResult consulta = new EntityResultMapImpl();
-		ResponseEntity resultado;
-		try {
-
-			cf.reset();
-			cf.addBasics(HotelDao.fields);
-			cf.validate(keyMap);
-
-			List<String> required = Arrays.asList(HotelDao.ATTR_ID, HotelDao.ATTR_NAME, HotelDao.ATTR_CITY);
-			cf.reset();
-			cf.addBasics(HotelDao.fields);
-//			cf.setRequired(required);
-//			cf.setOptional(false);
-			cf.validate(attrList);
-
-			consulta = hotelService.hotelQuery(keyMap, attrList);
-
-			List<PruebaHoteles> a = new ArrayList<PruebaHoteles>();
-
-			for (int i = 0; i < consulta.calculateRecordNumber(); i++) {
-				Integer id = (Integer) consulta.getRecordValues(i).get(HotelDao.ATTR_ID);
-				String name = (String) consulta.getRecordValues(i).get(HotelDao.ATTR_NAME);
-				String city = (String) consulta.getRecordValues(i).get(HotelDao.ATTR_CITY);
-
-				PruebaHoteles h = new PruebaHoteles(id, name, city);
-				a.add(h);
-			}
-
-			JRTableModelDataSource dataSource = new JRTableModelDataSource(
-					EntityResultUtils.createTableModel(consulta));
-			JasperReport jasperReport = JasperCompileManager.compileReport(HOTEL_TEMPLATE_PATH);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, ReportsConfig.getBasicParameters(),
-					dataSource);
-
-			resultado = returnFile(JasperExportManager.exportReportToPdf(jasperPrint));
-
-		} catch (ValidateException e) {
-			resultado = ResponseEntity.ok(e.getEntityResult());
-		} catch (Exception e) {
-			e.printStackTrace();
-			resultado = ResponseEntity.ok(new EntityResultWrong(ErrorMessage.UNKNOWN_ERROR));
-		}
-		return resultado;
-
-	}
+//	public ResponseEntity plantilla(Map<String, Object> keyMap, List<String> attrList) {
+//		EntityResult consulta = new EntityResultMapImpl();
+//		ResponseEntity resultado;
+//		try {
+//
+//			cf.reset();
+//			cf.addBasics(HotelDao.fields);
+//			cf.validate(keyMap);
+//
+//			List<String> required = Arrays.asList(HotelDao.ATTR_ID, HotelDao.ATTR_NAME, HotelDao.ATTR_CITY);
+//			cf.reset();
+//			cf.addBasics(HotelDao.fields);
+////			cf.setRequired(required);
+////			cf.setOptional(false);
+//			cf.validate(attrList);
+//
+//			consulta = hotelService.hotelQuery(keyMap, attrList);
+//
+//			List<PruebaHoteles> a = new ArrayList<PruebaHoteles>();
+//
+//			for (int i = 0; i < consulta.calculateRecordNumber(); i++) {
+//				Integer id = (Integer) consulta.getRecordValues(i).get(HotelDao.ATTR_ID);
+//				String name = (String) consulta.getRecordValues(i).get(HotelDao.ATTR_NAME);
+//				String city = (String) consulta.getRecordValues(i).get(HotelDao.ATTR_CITY);
+//
+//				PruebaHoteles h = new PruebaHoteles(id, name, city);
+//				a.add(h);
+//			}
+//
+//			JRTableModelDataSource dataSource = new JRTableModelDataSource(
+//					EntityResultUtils.createTableModel(consulta));
+//			JasperReport jasperReport = JasperCompileManager.compileReport(HOTEL_TEMPLATE_PATH);
+//			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, ReportsConfig.getBasicParameters(),
+//					dataSource);
+//
+//			resultado = returnFile(JasperExportManager.exportReportToPdf(jasperPrint));
+//
+//		} catch (ValidateException e) {
+//			resultado = ResponseEntity.ok(e.getEntityResult());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			resultado = ResponseEntity.ok(new EntityResultWrong(ErrorMessage.UNKNOWN_ERROR));
+//		}
+//		return resultado;
+//
+//	}
 
 	@Override
 	@Secured({ PermissionsProviderSecured.SECURED })
