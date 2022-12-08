@@ -38,7 +38,7 @@
 		<java.version>11</java.version>
 
 
-		<database.url>jdbc:postgresql://45.84.210.174:65432/Backend_2022_G3</database.url>
+		<database.url>jdbc:postgresql://localhost:5432/PFC_API_Atom_Hotels</database.url>
 
 
 		<postgresql.version>42.2.25</postgresql.version>
