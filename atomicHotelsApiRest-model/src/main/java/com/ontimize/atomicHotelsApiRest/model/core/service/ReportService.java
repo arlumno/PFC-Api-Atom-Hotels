@@ -615,8 +615,8 @@ public class ReportService implements IReportService {
 	private static Connection getMyPostgresConnection() {
 		try {
 			Class.forName("org.postgresql.Driver");
-			String connectionURL = "jdbc:postgresql://45.84.210.174:65432/Backend_2022_G3";
-			Connection conn = DriverManager.getConnection(connectionURL, "Backend_2022_G3", "quei1Okai3eeGieboo");
+			String connectionURL = "jdbc:postgresql://localhost:5432/PFC_API_Atom_Hotels";
+			Connection conn = DriverManager.getConnection(connectionURL, "PFC_API_Atom_Hotels", "123456");
 			return conn;
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

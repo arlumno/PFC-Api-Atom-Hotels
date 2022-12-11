@@ -2,9 +2,9 @@
 <jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl">
   <name>Adaptador postgresql</name>
   <driver>org.postgresql.Driver</driver>
-  <username>Backend_2022_G3</username>
-  <password>quei1Okai3eeGieboo</password>
-  <url>jdbc:postgresql://45.84.210.174:65432/Backend_2022_G3</url>
+  <username>PFC_API_Atom_Hotels</username>
+  <password>123456</password>
+  <url>jdbc:postgresql://localhost:5432/PFC_API_Atom_Hotels</url>
   <database></database>
   <savePassword>true</savePassword>
   <serverAddress></serverAddress>
